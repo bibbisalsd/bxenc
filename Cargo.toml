@@ -1,0 +1,17 @@
+[workspace]
+members = [
+    "crates/bxenc-core",
+    "crates/bxenc-cli",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+repository = "https://example.invalid/bxenc"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+unwrap_used = "deny"

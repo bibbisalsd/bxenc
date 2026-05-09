@@ -1,0 +1,1 @@
+//! Key generation command handler.
