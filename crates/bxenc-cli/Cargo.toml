@@ -7,6 +7,7 @@ license.workspace = true
 [dependencies]
 bxenc-core = { path = "../bxenc-core" }
 clap = { version = "4", features = ["derive"] }
+readpass = "1"
 zeroize = "1"
 
 [lints]
