@@ -5,8 +5,10 @@ edition.workspace = true
 license.workspace = true
 
 [dependencies]
+base64 = "0.22.1"
 bxenc-core = { path = "../bxenc-core" }
 clap = { version = "4", features = ["derive"] }
+rand = "0.8"
 readpass = "1"
 zeroize = "1"
 

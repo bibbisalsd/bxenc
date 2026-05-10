@@ -13,5 +13,11 @@ pub fn run(args: &EncryptArgs) -> BxResult<()> {
     let plaintext = read_all(&args.input)?;
     let blob = adhoc::encrypt::encrypt_bytes(credential.as_credential(), plaintext.as_slice())?;
 
-    write_all(&args.output, &blob)
+    if args.base64 {
+        use base64::prelude::*;
+        let b64 = BASE64_STANDARD.encode(&blob);
+        write_all(&args.output, b64.as_bytes())
+    } else {
+        write_all(&args.output, &blob)
+    }
 }

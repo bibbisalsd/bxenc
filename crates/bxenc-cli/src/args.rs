@@ -33,6 +33,7 @@ pub enum Command {
 impl Command {
     pub fn writes_stdout(&self) -> bool {
         match self {
+            Self::Encrypt(args) => path_is_dash(&args.output),
             Self::Decrypt(args) => path_is_dash(&args.output),
             Self::Vault(VaultArgs {
                 command: VaultCommand::List(_),
@@ -54,11 +55,14 @@ pub struct EncryptArgs {
     #[arg(long = "in", value_name = "path|-")]
     pub input: PathBuf,
 
-    #[arg(long = "out", value_name = "path")]
+    #[arg(long = "out", value_name = "path|-")]
     pub output: PathBuf,
 
     #[arg(long, value_name = "path")]
     pub keyfile: Option<PathBuf>,
+
+    #[arg(long)]
+    pub base64: bool,
 }
 
 #[derive(Debug, Args)]
@@ -71,6 +75,9 @@ pub struct DecryptArgs {
 
     #[arg(long, value_name = "path")]
     pub keyfile: Option<PathBuf>,
+
+    #[arg(long)]
+    pub base64: bool,
 }
 
 #[derive(Debug, Args)]
