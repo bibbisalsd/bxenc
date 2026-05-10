@@ -2,6 +2,7 @@
 members = [
     "crates/bxenc-core",
     "crates/bxenc-cli",
+    "crates/bxenc-integration",
 ]
 resolver = "2"
 
