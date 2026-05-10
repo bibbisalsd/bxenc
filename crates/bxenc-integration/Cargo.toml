@@ -25,5 +25,13 @@ path = "tests/vault_atomic_write.rs"
 name = "vault_aad_swap_rejected"
 path = "tests/vault_aad_swap_rejected.rs"
 
+[[test]]
+name = "stego_roundtrip"
+path = "tests/stego_roundtrip.rs"
+
+[[test]]
+name = "stego_on_ciphertext"
+path = "tests/stego_on_ciphertext.rs"
+
 [lints]
 workspace = true
