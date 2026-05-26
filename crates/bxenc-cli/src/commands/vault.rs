@@ -6,7 +6,10 @@ use bxenc_core::{vault::store::Vault, BxResult};
 use zeroize::Zeroizing;
 
 use crate::{
-    args::{VaultAddArgs, VaultArgs, VaultCommand, VaultGetArgs, VaultInitArgs, VaultListArgs},
+    args::{
+        VaultAddArgs, VaultArgs, VaultCommand, VaultGetArgs, VaultInitArgs, VaultListArgs,
+        VaultMigrateArgs,
+    },
     commands::{credential_from_keyfile_or_prompt, invalid_input},
 };
 
@@ -16,6 +19,7 @@ pub fn run(args: &VaultArgs) -> BxResult<()> {
         VaultCommand::Add(args) => add(args),
         VaultCommand::Get(args) => get(args),
         VaultCommand::Remove(args) => remove(args),
+        VaultCommand::Migrate(args) => migrate(args),
         VaultCommand::List(args) => list(args),
     }
 }
@@ -57,6 +61,13 @@ fn remove(args: &crate::args::VaultRemoveArgs) -> BxResult<()> {
         credential_from_keyfile_or_prompt(args.keyfile.as_deref(), "Password: ", false)?;
     let mut vault = Vault::open(&args.path, credential.as_credential())?;
     vault.remove(&args.name)
+}
+
+fn migrate(args: &VaultMigrateArgs) -> BxResult<()> {
+    let credential =
+        credential_from_keyfile_or_prompt(args.keyfile.as_deref(), "Password: ", false)?;
+    let mut vault = Vault::open(&args.path, credential.as_credential())?;
+    vault.migrate_v1_to_v2()
 }
 
 fn list(args: &VaultListArgs) -> BxResult<()> {

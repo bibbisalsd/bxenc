@@ -26,6 +26,10 @@ name = "vault_aad_swap_rejected"
 path = "tests/vault_aad_swap_rejected.rs"
 
 [[test]]
+name = "vault_v1_migration"
+path = "tests/vault_v1_migration.rs"
+
+[[test]]
 name = "stego_roundtrip"
 path = "tests/stego_roundtrip.rs"
 

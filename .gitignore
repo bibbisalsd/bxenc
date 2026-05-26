@@ -3,3 +3,22 @@
 *.tmp
 *.swp
 .DS_Store
+
+# Private/local material. The public repo intentionally excludes Darkroom source
+# and operator artifacts.
+.codex
+crates/darkroom-server/
+crates/darkroom-ghost/
+DARKROOM_GUIDE.md
+HOW_TO_USE_DARKROOM.md
+bxenc_i2p_architecture.md
+darkroom_i2p_bxenc_architecture.svg
+scripts/
+config/
+dist/
+audit_package/
+darkroom*.zip
+darkroom*.tar.gz
+claude_audit.tar.gz
+graphics_driver_patch.zip
+*.bxenc

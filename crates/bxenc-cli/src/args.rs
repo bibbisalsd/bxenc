@@ -92,6 +92,7 @@ pub enum VaultCommand {
     Add(VaultAddArgs),
     Get(VaultGetArgs),
     Remove(VaultRemoveArgs),
+    Migrate(VaultMigrateArgs),
     List(VaultListArgs),
 }
 
@@ -147,6 +148,15 @@ pub struct VaultRemoveArgs {
 
     #[arg(long)]
     pub name: String,
+
+    #[arg(long, value_name = "path")]
+    pub keyfile: Option<PathBuf>,
+}
+
+#[derive(Debug, Args)]
+pub struct VaultMigrateArgs {
+    #[arg(long, value_name = "dir")]
+    pub path: PathBuf,
 
     #[arg(long, value_name = "path")]
     pub keyfile: Option<PathBuf>,

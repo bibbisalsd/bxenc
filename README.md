@@ -1,8 +1,23 @@
 # bxenc
 
-> A Rust CLI secure vault and steganographic encoding toolkit.
-> XChaCha20-Poly1305 encryption. Argon2id key derivation. Atomic metadata writes.
-> Full zeroize discipline throughout. Cross-platform.
+`bxenc` is a Rust CLI vault and steganography toolkit. It provides ad-hoc
+file encryption, encrypted vault metadata, and ciphertext wrapping modes built
+around XChaCha20-Poly1305, Argon2id, authenticated metadata binding, atomic
+writes, and explicit limitation documentation.
+
+This repository contains the public `bxenc` source code only.
+
+## Darkroom
+
+Darkroom is a private-source anonymous chat system that uses `bxenc` as part of
+its security model for vault protection, bootstrap material, and encrypted
+private-message workflows. It is designed around I2P-routed relay behavior and
+hybrid private-message key agreement using X25519 and ML-KEM-768.
+
+Darkroom source code is intentionally not published in this repository. The
+public overview and portfolio write-up are here:
+
+- https://sean-colon.xyz/project/bxenc
 
 ## 1. Overview
 
