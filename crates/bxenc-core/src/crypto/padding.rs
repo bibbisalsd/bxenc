@@ -1,6 +1,6 @@
-/// PADMÉ (Padding Arbitrary Data with Maximal Efficiency) implementation.
-/// Based on the PURBs (Padded Uniform Random Blobs) padding scheme.
-/// This scheme leaks only O(log log L) bits of the payload length L.
+//! PADMÉ (Padding Arbitrary Data with Maximal Efficiency) implementation.
+//! Based on the PURBs (Padded Uniform Random Blobs) padding scheme.
+//! This scheme leaks only O(log log L) bits of the payload length L.
 
 pub fn padme_len(len: usize) -> usize {
     if len == 0 {
@@ -14,7 +14,7 @@ pub fn padme_len(len: usize) -> usize {
     let s = 63 - ((e + 1) as u64).leading_zeros();
 
     let step = 1 << (e - s);
-    ((len + step - 1) / step) * step
+    len.div_ceil(step) * step
 }
 
 /// Clamps the length to the next operational bucket: 256, 512, 1024, 2048, 4096.
